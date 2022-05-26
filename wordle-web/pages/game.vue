@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue} from 'vue-property-decorator'
 import { WordsService } from '~/scripts/wordsService'
 import { GameState, WordleGame } from '~/scripts/wordleGame'
 import KeyBoard from '@/components/keyboard.vue'

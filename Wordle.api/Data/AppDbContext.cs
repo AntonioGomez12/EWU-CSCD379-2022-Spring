@@ -1,5 +1,3 @@
-
-
 using Microsoft.EntityFrameworkCore;
 
 namespace Wordle.Api.Data
@@ -11,7 +9,18 @@ namespace Wordle.Api.Data
         {
         }
 
-        public DbSet<ScoreStat> ScoreStats { get; set; } = null!;
-        public DbSet<Player> PlayerStats { get; set; } = null!;
-    }
+        public DbSet<ScoreStat> ScoreStats => Set<ScoreStat>();
+        public DbSet<Player> Players => Set<Player>();
+        public DbSet<Word> Words => Set<Word>();
+        public DbSet<Game> Games => Set<Game>();
+        public DbSet<DateWord> DateWords => Set<DateWord>();
+        public DbSet<Setting> Settings => Set<Setting>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //new GameConfiguration().Configure(modelBuilder.Entity<Game>());
+            //new WordConfiguration().Configure(modelBuilder.Entity<Word>());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        }
+    }        
 }
